@@ -35,7 +35,8 @@ public class VideoManager {
 
     public VideoItems[] findLast() {
         VideoItems[] all = this.getItems();
-        VideoItems[] reversed = new VideoItems[this.resultLength];
+        int reversedLength = all.length < this.resultLength ? all.length : this.resultLength;
+        VideoItems[] reversed = new VideoItems[reversedLength];
         for (int i = 0; i < reversed.length; i++) {
             reversed[i] = all[all.length - 1 - i];
         }
