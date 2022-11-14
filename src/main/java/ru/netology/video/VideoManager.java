@@ -3,29 +3,38 @@ package ru.netology.video;
 import ru.netology.repo.VideoRepository;
 
 public class VideoManager {
-    private VideoRepository repo;
+
+    private VideoItems[] items = new VideoItems[0];
+    public void save(VideoItems item) {
+        VideoItems[] tmp = new VideoItems[items.length + 1];
+        for (int i = 0; i < items.length; i++) {
+            tmp[i] = items[i];
+        }
+        tmp[tmp.length - 1] = item;
+        items = tmp;
+    }
+    public VideoItems[] getItems() {
+        return items;
+    }
+
     private int resultLength;
 
-    public VideoManager(VideoRepository repo, int resultLength) {
-        this.repo = repo;
+    public VideoManager(int resultLength) {
         this.resultLength = resultLength;
     }
 
-    public VideoManager(VideoRepository repo) {
-        this(repo, 10);
+    public VideoManager() {
+        this(10);
     }
 
-    public void add (VideoItems item) {
-        repo.save(item);
-    }
 
     public VideoItems[] findAll() {
-        VideoItems[] all = repo.getItems();
+        VideoItems[] all = this.getItems();
         return all;
     }
 
     public VideoItems[] findLast() {
-        VideoItems[] all = repo.getItems();
+        VideoItems[] all = this.getItems();
         VideoItems[] reversed = new VideoItems[this.resultLength];
         for (int i = 0; i < reversed.length; i++) {
             reversed[i] = all[all.length - 1 - i];

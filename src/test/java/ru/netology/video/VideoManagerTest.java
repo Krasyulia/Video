@@ -3,13 +3,11 @@ package ru.netology.video;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import ru.netology.repo.VideoRepository;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class VideoManagerTest {
-    VideoRepository repo = new VideoRepository();
-    VideoManager manager = new VideoManager(repo);
+    VideoManager manager = new VideoManager();
     VideoItems item1 = new VideoItems("Пила1");
     VideoItems item2 = new VideoItems("Пила2");
     VideoItems item3 = new VideoItems("Пила3");
@@ -24,17 +22,17 @@ public class VideoManagerTest {
 
     @BeforeEach
     public void setup() {
-        manager.add(item1);
-        manager.add(item2);
-        manager.add(item3);
-        manager.add(item4);
-        manager.add(item5);
-        manager.add(item6);
-        manager.add(item7);
-        manager.add(item8);
-        manager.add(item9);
-        manager.add(item10);
-        manager.add(item11);
+        manager.save(item1);
+        manager.save(item2);
+        manager.save(item3);
+        manager.save(item4);
+        manager.save(item5);
+        manager.save(item6);
+        manager.save(item7);
+        manager.save(item8);
+        manager.save(item9);
+        manager.save(item10);
+        manager.save(item11);
     }
 
 
